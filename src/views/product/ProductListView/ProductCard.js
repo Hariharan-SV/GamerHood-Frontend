@@ -72,7 +72,7 @@ const ProductCard = ({ className, product, ...rest }) => {
           justify="space-between"
           spacing={2}
         >
-          <Grid
+          {/*<Grid
             className={classes.statsItem}
             item
           >
@@ -87,7 +87,7 @@ const ProductCard = ({ className, product, ...rest }) => {
             >
               Updated 2hr ago
             </Typography>
-          </Grid>
+        </Grid>*/}
           <Grid
             className={classes.statsItem}
             item

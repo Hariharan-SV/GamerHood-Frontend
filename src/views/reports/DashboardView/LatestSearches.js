@@ -62,7 +62,7 @@ const useStyles = makeStyles(({
   }
 }));
 
-const LatestProducts = ({ className, ...rest }) => {
+const LatestSearches = ({ className, ...rest }) => {
   const classes = useStyles();
   const [products] = useState(data);
 
@@ -72,8 +72,8 @@ const LatestProducts = ({ className, ...rest }) => {
       {...rest}
     >
       <CardHeader
-        subtitle={`${products.length} in total`}
-        title="Latest Products"
+        subheader={`${products.length} in total`}
+        title="Latest Searches"
       />
       <Divider />
       <List>
@@ -91,19 +91,19 @@ const LatestProducts = ({ className, ...rest }) => {
             </ListItemAvatar>
             <ListItemText
               primary={product.name}
-              secondary={`Updated ${product.updatedAt.fromNow()}`}
+              secondary={`Searched ${product.updatedAt.fromNow()}`}
             />
-            <IconButton
+            {/*<IconButton
               edge="end"
               size="small"
             >
               <MoreVertIcon />
-            </IconButton>
+            </IconButton>*/}
           </ListItem>
         ))}
       </List>
       <Divider />
-      <Box
+      {/*<Box
         display="flex"
         justifyContent="flex-end"
         p={2}
@@ -116,13 +116,13 @@ const LatestProducts = ({ className, ...rest }) => {
         >
           View all
         </Button>
-      </Box>
+      </Box>*/}
     </Card>
   );
 };
 
-LatestProducts.propTypes = {
+LatestSearches.propTypes = {
   className: PropTypes.string
 };
 
-export default LatestProducts;
+export default LatestSearches;
