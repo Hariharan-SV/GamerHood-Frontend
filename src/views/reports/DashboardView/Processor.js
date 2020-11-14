@@ -12,7 +12,7 @@ import {
   makeStyles
 } from '@material-ui/core';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
-import PeopleIcon from '@material-ui/icons/PeopleOutlined';
+import SelectIcon from '@material-ui/icons/SelectAll';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const TotalCustomers = ({ className, ...rest }) => {
+const Processor = ({ className, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -52,47 +52,28 @@ const TotalCustomers = ({ className, ...rest }) => {
               gutterBottom
               variant="h6"
             >
-              TOTAL CUSTOMERS
+              Processor
             </Typography>
             <Typography
               color="textPrimary"
               variant="h3"
             >
-              1,600
+              intel i5 8th gen
             </Typography>
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>
-              <PeopleIcon />
+              <SelectIcon />
             </Avatar>
           </Grid>
         </Grid>
-        <Box
-          mt={2}
-          display="flex"
-          alignItems="center"
-        >
-          <ArrowUpwardIcon className={classes.differenceIcon} />
-          <Typography
-            className={classes.differenceValue}
-            variant="body2"
-          >
-            16%
-          </Typography>
-          <Typography
-            color="textSecondary"
-            variant="caption"
-          >
-            Since last month
-          </Typography>
-        </Box>
       </CardContent>
     </Card>
   );
 };
 
-TotalCustomers.propTypes = {
+Processor.propTypes = {
   className: PropTypes.string
 };
 
-export default TotalCustomers;
+export default Processor;

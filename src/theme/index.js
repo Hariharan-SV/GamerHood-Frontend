@@ -5,19 +5,19 @@ import typography from './typography';
 const theme = createMuiTheme({
   palette: {
     background: {
-      dark: '#F4F6F8',
-      default: colors.common.white,
-      paper: colors.common.white
+      dark: '#111',
+      default: '#000',
+      paper: '#000'
     },
     primary: {
-      main: colors.indigo[500]
+      main: '#FEDC3D',
     },
     secondary: {
-      main: colors.indigo[500]
+      main: '#FEDC3D'
     },
     text: {
-      primary: colors.blueGrey[900],
-      secondary: colors.blueGrey[600]
+      primary: '#FFFFFF',
+      secondary: '#F7F7F7'
     }
   },
   shadows,

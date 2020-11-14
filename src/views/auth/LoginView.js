@@ -51,7 +51,7 @@ const LoginView = () => {
               password: Yup.string().max(255).required('Password is required')
             })}
             onSubmit={() => {
-              navigate('/app/dashboard', { replace: true });
+              navigate('/user/dashboard', { replace: true });
             }}
           >
             {({
@@ -173,7 +173,7 @@ const LoginView = () => {
                   {' '}
                   <Link
                     component={RouterLink}
-                    to="/register"
+                    to="/auth/register"
                     variant="h6"
                   >
                     Sign up

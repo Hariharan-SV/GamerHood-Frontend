@@ -10,7 +10,7 @@ import {
   makeStyles,
   colors
 } from '@material-ui/core';
-import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import SystemIcon from '@material-ui/icons/SystemUpdateAlt';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -23,7 +23,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const TotalProfit = ({ className, ...rest }) => {
+const OS = ({ className, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -43,18 +43,18 @@ const TotalProfit = ({ className, ...rest }) => {
               gutterBottom
               variant="h6"
             >
-              TOTAL PROFIT
+              Operating System
             </Typography>
             <Typography
               color="textPrimary"
               variant="h3"
             >
-              $23,200
+              Windows 10
             </Typography>
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>
-              <AttachMoneyIcon />
+              <SystemIcon />
             </Avatar>
           </Grid>
         </Grid>
@@ -63,8 +63,8 @@ const TotalProfit = ({ className, ...rest }) => {
   );
 };
 
-TotalProfit.propTypes = {
+OS.propTypes = {
   className: PropTypes.string
 };
 
-export default TotalProfit;
+export default OS;

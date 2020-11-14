@@ -5,13 +5,13 @@ import {
   makeStyles
 } from '@material-ui/core';
 import Page from 'src/components/Page';
-import Budget from './Budget';
+import Graphics from './Graphics';
 import LatestOrders from './LatestOrders';
 import LatestSearches from './LatestSearches';
 import Sales from './Sales';
-import TasksProgress from './TasksProgress';
-import TotalCustomers from './TotalCustomers';
-import TotalProfit from './TotalProfit';
+import Memory from './Memory';
+import Processor from './Processor';
+import OS from './OS';
 import TrafficByDevice from './TrafficByDevice';
 
 const useStyles = makeStyles((theme) => ({
@@ -43,7 +43,7 @@ const Dashboard = () => {
             xl={3}
             xs={12}
           >
-            <Budget />
+            <Graphics />
           </Grid>
           <Grid
             item
@@ -52,7 +52,7 @@ const Dashboard = () => {
             xl={3}
             xs={12}
           >
-            <TotalCustomers />
+            <Processor />
           </Grid>
           <Grid
             item
@@ -61,7 +61,7 @@ const Dashboard = () => {
             xl={3}
             xs={12}
           >
-            <TasksProgress />
+            <Memory />
           </Grid>
           <Grid
             item
@@ -70,7 +70,7 @@ const Dashboard = () => {
             xl={3}
             xs={12}
           >
-            <TotalProfit />
+            <OS />
           </Grid>
           {/*<Grid
             item

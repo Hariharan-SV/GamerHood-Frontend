@@ -59,7 +59,7 @@ const Toolbar = ({ className, ...rest }) => {
                     <InputAdornment position="start">
                       <SvgIcon
                         fontSize="small"
-                        color="action"
+                        color="#FFF"
                       >
                         <SearchIcon />
                       </SvgIcon>
@@ -68,6 +68,7 @@ const Toolbar = ({ className, ...rest }) => {
                 }}
                 placeholder="Search product"
                 variant="outlined"
+                style={{backgroundColor:"#222"}}
               />
             </Box>
           </CardContent>

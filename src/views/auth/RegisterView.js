@@ -58,7 +58,7 @@ const RegisterView = () => {
               })
             }
             onSubmit={() => {
-              navigate('/app/dashboard', { replace: true });
+              navigate('/user/dashboard', { replace: true });
             }}
           >
             {({
@@ -188,7 +188,7 @@ const RegisterView = () => {
                   {' '}
                   <Link
                     component={RouterLink}
-                    to="/login"
+                    to="/auth/login"
                     variant="h6"
                   >
                     Sign in

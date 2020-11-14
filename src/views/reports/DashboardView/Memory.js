@@ -12,7 +12,7 @@ import {
   makeStyles,
   colors
 } from '@material-ui/core';
-import InsertChartIcon from '@material-ui/icons/InsertChartOutlined';
+import MemoryIcon from '@material-ui/icons/Memory';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -25,7 +25,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const TasksProgress = ({ className, ...rest }) => {
+const Memory = ({ className, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -45,34 +45,28 @@ const TasksProgress = ({ className, ...rest }) => {
               gutterBottom
               variant="h6"
             >
-              TASKS PROGRESS
+              Memory
             </Typography>
             <Typography
               color="textPrimary"
               variant="h3"
             >
-              75.5%
+              4 GB RAM
             </Typography>
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>
-              <InsertChartIcon />
+              <MemoryIcon />
             </Avatar>
           </Grid>
         </Grid>
-        <Box mt={3}>
-          <LinearProgress
-            value={75.5}
-            variant="determinate"
-          />
-        </Box>
       </CardContent>
     </Card>
   );
 };
 
-TasksProgress.propTypes = {
+Memory.propTypes = {
   className: PropTypes.string
 };
 
-export default TasksProgress;
+export default Memory;

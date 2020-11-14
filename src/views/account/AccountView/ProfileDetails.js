@@ -75,13 +75,13 @@ const ProfileDetails = ({ className, ...rest }) => {
             >
               <TextField
                 fullWidth
-                helperText="Please specify the first name"
                 label="First name"
                 name="firstName"
                 onChange={handleChange}
                 required
                 value={values.firstName}
                 variant="outlined"
+                style={{backgroundColor:"#222"}}
               />
             </Grid>
             <Grid
@@ -97,6 +97,7 @@ const ProfileDetails = ({ className, ...rest }) => {
                 required
                 value={values.lastName}
                 variant="outlined"
+                style={{backgroundColor:"#222"}}
               />
             </Grid>
             <Grid
@@ -112,6 +113,7 @@ const ProfileDetails = ({ className, ...rest }) => {
                 required
                 value={values.email}
                 variant="outlined"
+                style={{backgroundColor:"#222"}}
               />
             </Grid>
             <Grid
@@ -127,6 +129,7 @@ const ProfileDetails = ({ className, ...rest }) => {
                 type="number"
                 value={values.phone}
                 variant="outlined"
+                style={{backgroundColor:"#222"}}
               />
             </Grid>
             <Grid
@@ -142,6 +145,7 @@ const ProfileDetails = ({ className, ...rest }) => {
                 required
                 value={values.country}
                 variant="outlined"
+                style={{backgroundColor:"#222"}}
               />
             </Grid>
             <Grid
@@ -159,6 +163,7 @@ const ProfileDetails = ({ className, ...rest }) => {
                 SelectProps={{ native: true }}
                 value={values.state}
                 variant="outlined"
+                style={{backgroundColor:"#222"}}
               >
                 {states.map((option) => (
                   <option

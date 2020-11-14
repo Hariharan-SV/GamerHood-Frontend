@@ -62,7 +62,8 @@ const useStyles = makeStyles(({
   }
 }));
 
-const LatestSearches = ({ className, ...rest }) => {
+const LatestSearches = (props) => {
+  const { className, ...rest } = props;
   const classes = useStyles();
   const [products] = useState(data);
 

@@ -51,6 +51,8 @@ const Password = ({ className, ...rest }) => {
             type="password"
             value={values.password}
             variant="outlined"
+            color="secondary"
+            style={{backgroundColor:"#222"}}
           />
           <TextField
             fullWidth
@@ -61,6 +63,8 @@ const Password = ({ className, ...rest }) => {
             type="password"
             value={values.confirm}
             variant="outlined"
+            color="secondary"
+            style={{backgroundColor:"#222"}}
           />
         </CardContent>
         <Divider />
@@ -70,7 +74,7 @@ const Password = ({ className, ...rest }) => {
           p={2}
         >
           <Button
-            color="primary"
+            color="secondary"
             variant="contained"
           >
             Update
