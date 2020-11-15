@@ -23,11 +23,11 @@ import {
   Users as UsersIcon
 } from 'react-feather';
 import NavItem from './NavItem';
+import UserProfile from 'src/session/user';
 
 const user = {
   avatar: '/static/images/avatars/avatar_12.png',
   jobTitle: 'Gamer',
-  name: 'Katarina Smith'
 };
 
 const items = [
@@ -73,6 +73,7 @@ const NavBar = (props) => {
   const { onMobileClose, openMobile } = props;
   const classes = useStyles();
   const location = useLocation();
+  const profile = UserProfile.getMail();
 
   useEffect(() => {
     if (openMobile && onMobileClose) {
@@ -104,7 +105,7 @@ const NavBar = (props) => {
           color="textPrimary"
           variant="h5"
         >
-          {user.name}
+          {profile}
         </Typography>
         <Typography
           color="textSecondary"

@@ -26,7 +26,9 @@ const useStyles = makeStyles((theme) => ({
 const ProductList = () => {
   const classes = useStyles();
   const [products] = useState(data);
-
+  React.useEffect(()=>{
+    
+  })
   return (
     <Page
       className={classes.root}

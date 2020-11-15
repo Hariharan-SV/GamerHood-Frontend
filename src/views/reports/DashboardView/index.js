@@ -23,9 +23,9 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Dashboard = () => {
+const Dashboard = (props) => {
   const classes = useStyles();
-
+  
   return (
     <Page
       className={classes.root}
