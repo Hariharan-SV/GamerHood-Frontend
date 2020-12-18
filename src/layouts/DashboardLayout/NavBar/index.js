@@ -23,7 +23,7 @@ import {
   Users as UsersIcon
 } from 'react-feather';
 import NavItem from './NavItem';
-import UserProfile from 'src/session/user';
+import {getUser} from '../../../services/user';
 
 const user = {
   avatar: '/static/images/avatars/avatar_12.png',
@@ -73,12 +73,17 @@ const NavBar = (props) => {
   const { onMobileClose, openMobile } = props;
   const classes = useStyles();
   const location = useLocation();
-  const profile = UserProfile.getMail();
+  const [mail,setMail] = React.useState("");
 
   useEffect(() => {
+    async function setMailValues(){
+      var temp = await getUser();
+      setMail(temp['userDetails']?temp['userDetails']['email']:"");
+    }
     if (openMobile && onMobileClose) {
       onMobileClose();
     }
+    setMailValues();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
 
@@ -98,14 +103,14 @@ const NavBar = (props) => {
           className={classes.avatar}
           component={RouterLink}
           src={user.avatar}
-          to="/app/account"
+          to="/user/account"
         />
         <Typography
           className={classes.name}
           color="textPrimary"
           variant="h5"
         >
-          {profile}
+          {mail}
         </Typography>
         <Typography
           color="textSecondary"

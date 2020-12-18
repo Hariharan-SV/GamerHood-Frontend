@@ -10,7 +10,7 @@ import {
   makeStyles,
   colors
 } from '@material-ui/core';
-import SystemIcon from '@material-ui/icons/SystemUpdateAlt';
+import LaptopIcon from '@material-ui/icons/Laptop';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -54,7 +54,7 @@ const OS = ({ className, ...rest }) => {
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>
-              <SystemIcon />
+              <LaptopIcon />
             </Avatar>
           </Grid>
         </Grid>

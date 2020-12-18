@@ -12,7 +12,7 @@ import {
   makeStyles
 } from '@material-ui/core';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
-import MoneyIcon from '@material-ui/icons/Money';
+import BrokenImageIcon from '@material-ui/icons/BrokenImage';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,7 +63,7 @@ const Graphics = ({ className, ...rest }) => {
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>
-              <MoneyIcon />
+              <BrokenImageIcon />
             </Avatar>
           </Grid>
         </Grid>
