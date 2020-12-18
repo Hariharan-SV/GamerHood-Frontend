@@ -15,9 +15,8 @@ import {
 import FacebookIcon from 'src/icons/Facebook';
 import GoogleIcon from 'src/icons/Google';
 import Page from 'src/components/Page';
-import {handleLogin} from 'src/controllers/auth';
-import UserProfile from 'src/session/user';
-import {getUser} from 'src/controllers/user';
+import {handleLogin} from 'src/services/auth';
+import Cookie from 'js-cookie';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,10 +27,10 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const LoginView = () => {
+const LoginView = (props) => {
+  const {isAuthenticated} = props;
   const classes = useStyles();
   const navigate = useNavigate();
-  const profile = UserProfile;
   
   return (
     <Page
@@ -67,14 +66,13 @@ const LoginView = () => {
               <form onSubmit={async(event) => {
                 event.preventDefault();
                 let result = await handleLogin(values);
-                if(result['status'] === 0) {
-                 alert(result['message']);
+                if(result['status'] === 1) {                  
+                  Cookie.set("x-auth-token",result['token']);
+                  isAuthenticated(true);
+                  navigate('/user/dashboard',{replace:true});
                 }
                 else {
-                  profile.setMail(values.email);
-                  profile.setData(getUser());
-                  console.log(profile);
-                  navigate('/user/dashboard',{replace:false})
+                  alert(result['message']);
                 }
               }}>
                 <Box mb={3}>
@@ -94,6 +92,7 @@ const LoginView = () => {
                 </Box>
                 <TextField
                   error={Boolean(touched.email && errors.email)}
+                  style={{backgroundColor:"#222"}}
                   fullWidth
                   helperText={touched.email && errors.email}
                   label="Email Address"
@@ -104,9 +103,11 @@ const LoginView = () => {
                   type="email"
                   value={values.email}
                   variant="outlined"
+                  required
                 />
                 <TextField
                   error={Boolean(touched.password && errors.password)}
+                  style={{backgroundColor:"#222"}}
                   fullWidth
                   helperText={touched.password && errors.password}
                   label="Password"
@@ -117,6 +118,7 @@ const LoginView = () => {
                   type="password"
                   value={values.password}
                   variant="outlined"
+                  required
                 />
                 <Box my={2}>
                   <Button
