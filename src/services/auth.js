@@ -1,6 +1,6 @@
 const handleLogin = async(values) => {
   let result = {};
-  await fetch('http://localhost:5000'+'/auth/login',{
+  await fetch(process.env.REACT_APP_BACKEND_URL+'/auth/login',{
       method:'POST',
       mode:'cors',
       headers: {
@@ -8,7 +8,7 @@ const handleLogin = async(values) => {
       "Access-Control-Allow-Credentials": "true",
       "Access-Control-Allow-Origin":"*",
       "Access-Control-Allow-Methods": "POST",
-      "Access-Control-Allow-Headers": "Content-Type"
+      "Access-Control-Allow-Headers": "Content-Type",
     },
     body:JSON.stringify(values)
   })
@@ -20,9 +20,10 @@ const handleLogin = async(values) => {
 
 const handleRegister = async (values) => {
   let result = {};
-  await fetch('http://localhost:5000'+'/auth/register',{
+  await fetch(process.env.REACT_APP_BACKEND_URL+'/auth/register',{
       method:'POST',
       mode:'cors',
+      credentials: 'same-origin',
       headers: {
       "Content-Type": "application/json",
       "Access-Control-Allow-Credentials": "true",
