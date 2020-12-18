@@ -14,7 +14,9 @@ import {
   makeStyles
 } from '@material-ui/core';
 import Page from 'src/components/Page';
-import {handleRegister} from 'src/controllers/auth';
+import {handleRegister} from 'src/services/auth';
+import Cookie from 'js-cookie';
+import {getUser} from 'src/services/user';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,7 +27,8 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const RegisterView = () => {
+const RegisterView = (props) => {
+  const {isAuthenticated} = props;
   const classes = useStyles();
   const navigate = useNavigate();
 
@@ -71,11 +74,13 @@ const RegisterView = () => {
               <form onSubmit={async(event) => {
                 event.preventDefault();
                 let result = await handleRegister(values);
-                if(result == 0){
-                  alert(result['message']);
+                if(result['status'] === 1){
+                  Cookie.set('x-auth-token',result['token']);
+                  isAuthenticated(true);
+                  navigate('/user/dashboard',{replace:true});
                 }
                 else {
-                  navigate('/user/dashboard',{replace:false})
+                  alert(result['message']);                  
                 }
               }}>
                 <Box mb={3}>
@@ -105,6 +110,7 @@ const RegisterView = () => {
                   value={values.firstName}
                   variant="outlined"
                   style={{backgroundColor:"#222"}}
+                  required
                 />
                 <TextField
                   error={Boolean(touched.lastName && errors.lastName)}
@@ -118,6 +124,7 @@ const RegisterView = () => {
                   value={values.lastName}
                   variant="outlined"
                   style={{backgroundColor:"#222"}}
+                  required
                 />
                 <TextField
                   error={Boolean(touched.email && errors.email)}
@@ -132,6 +139,7 @@ const RegisterView = () => {
                   value={values.email}
                   variant="outlined"
                   style={{backgroundColor:"#222"}}
+                  required
                 />
                 <TextField
                   error={Boolean(touched.password && errors.password)}
@@ -146,6 +154,7 @@ const RegisterView = () => {
                   value={values.password}
                   variant="outlined"
                   style={{backgroundColor:"#222"}}
+                  required
                 />
                 <Box
                   alignItems="center"
