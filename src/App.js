@@ -6,9 +6,34 @@ import GlobalStyles from 'src/components/GlobalStyles';
 import 'src/mixins/chartjs';
 import theme from 'src/theme';
 import routes from 'src/routes';
+import { isLoggedIn } from './controllers/user';
+
+const onLoad = async() => {
+  let value = false;
+  try {
+    value = await isLoggedIn();
+  } catch (e) {
+    alert(e);
+  }
+  return value;
+}
 
 const App = () => {
-  const routing = useRoutes(routes);
+  const [authenticated,isAuthenticated] = React.useState(onLoad);
+  React.useEffect(() => {
+    const onLoad = async() => {
+      console.log(process.env.REACT_APP_BACKEND_URL)
+      try {
+        const value = await isLoggedIn();
+        isAuthenticated(value);
+      } catch (e) {
+        alert(e);
+      }
+    }
+    onLoad();
+  }, []);
+
+  const routing = useRoutes(routes(authenticated,isAuthenticated));
 
   return (
     <ThemeProvider theme={theme}>

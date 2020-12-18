@@ -11,10 +11,10 @@ import ProductListView from 'src/views/product/ProductListView';
 import RegisterView from 'src/views/auth/RegisterView';
 import SettingsView from 'src/views/settings/SettingsView';
 
-const routes = [
+const routes = (isLoggedIn, isAuthenticated) => [
   {
-    path: 'user',
-    element: <DashboardLayout />,
+    path: '/user',
+    element: isLoggedIn ? <DashboardLayout /> : <Navigate to="/login" />,
     children: [
       { path: 'account', element: <AccountView /> },
       { path: 'customers', element: <CustomerListView /> },
@@ -24,28 +24,21 @@ const routes = [
     ]
   },
   {
-    path: 'game',
-    element: <DashboardLayout />,
+    path: '/game',
+    element: isLoggedIn ?<DashboardLayout /> : <Navigate to="/login" />,
     children: [
       { path: '/', element: <ProductListView /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]
   },
   {
-    path: 'auth',
-    element: <MainLayout />,
-    children: [
-      { path: 'login', element: <LoginView /> },
-      { path: 'register', element: <RegisterView /> },
-      { path: '*', element: <Navigate to="/404" /> }
-    ]
-  },
-  {
     path: '/',
-    element: <MainLayout />,
+    element: isLoggedIn? <Navigate to="user/dashboard" /> : <MainLayout />,
     children: [
+      { path: 'login', element: <LoginView isAuthenticated={isAuthenticated}/> },
+      { path: 'register', element: <RegisterView isAuthenticated={isAuthenticated}/> },
+      { path: '/', element: <Navigate to="login" /> },
       { path: '404', element: <NotFoundView /> },
-      { path: '/', element: <Navigate to="/user/dashboard" /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]
   }
