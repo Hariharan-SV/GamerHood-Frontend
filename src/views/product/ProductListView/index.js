@@ -36,6 +36,7 @@ const ProductList = () => {
     >
       <Container maxWidth={false}>
         <Toolbar />
+        {/*
         <Box mt={3}>
           <Grid
             container
