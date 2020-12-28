@@ -33,20 +33,24 @@ const Toolbar = ({ className, ...rest }) => {
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
-  const [matchingGames,setMatchingGames] = React.useState([]);
+  
+  function useFetch() {
+    const [data, setData] = React.useState([]);
+  
+    React.useEffect(() => {
+      async function fetchUrl() {
+          let values =  await getResults(name);
+          if(values['status'] === 1){
+            values = values['data'];
+            setData(values);
+          }
+        }
+      fetchUrl();
+    }, [name]);
+    return data;
+  }
 
-  React.useEffect(()=>{
-    async function onLoad() {
-      let values = await getResults(name);
-      let data = [];
-      if(values['status'] === 1){
-        data = values['data'];
-      }
-      setMatchingGames(data);
-    }
-    onLoad();
-
-  },[matchingGames])
+  const matchingGames = useFetch();
 
   return (
     <div
