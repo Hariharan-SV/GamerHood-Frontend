@@ -4,7 +4,7 @@ import {
   Grid,
 } from '@material-ui/core';
 import Graphics from './Graphics';
-//import LatestSearches from './LatestSearches';
+import LatestSearches from './LatestSearches';
 import Memory from './Memory';
 import Processor from './Processor';
 import OS from './OS';
@@ -60,7 +60,7 @@ const MainCard = (props) => {
             xl={3}
             xs={12}
           >
-            {/*<LatestSearches />*/}
+            <LatestSearches data={userData["searches"]?userData["searches"]:[]}/>
           </Grid>
         </Grid>
       </Container>

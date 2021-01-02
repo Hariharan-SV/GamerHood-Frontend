@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { v4 as uuid } from 'uuid';
 import moment from 'moment';
 import {
   Card,
@@ -14,39 +13,6 @@ import {
   makeStyles
 } from '@material-ui/core';
 
-const data = [
-  {
-    id: uuid(),
-    name: 'Dropbox',
-    imageUrl: '/static/images/products/product_1.png',
-    updatedAt: moment().subtract(2, 'hours')
-  },
-  {
-    id: uuid(),
-    name: 'Medium Corporation',
-    imageUrl: '/static/images/products/product_2.png',
-    updatedAt: moment().subtract(2, 'hours')
-  },
-  {
-    id: uuid(),
-    name: 'Slack',
-    imageUrl: '/static/images/products/product_3.png',
-    updatedAt: moment().subtract(3, 'hours')
-  },
-  {
-    id: uuid(),
-    name: 'Lyft',
-    imageUrl: '/static/images/products/product_4.png',
-    updatedAt: moment().subtract(5, 'hours')
-  },
-  {
-    id: uuid(),
-    name: 'GitHub',
-    imageUrl: '/static/images/products/product_5.png',
-    updatedAt: moment().subtract(9, 'hours')
-  }
-];
-
 const useStyles = makeStyles(({
   root: {
     height: '100%'
@@ -58,9 +24,16 @@ const useStyles = makeStyles(({
 }));
 
 const LatestSearches = (props) => {
-  const { className, ...rest } = props;
+  const { data, className, ...rest } = props;
   const classes = useStyles();
-  const [products] = useState(data);
+
+  const getSearchedTime = (dateTime) => {
+    var now  = moment(new Date());
+    var then = moment(dateTime, "YYYY-MM-DD HH:mm:ss");
+    var timeDifferenceInMinutes = now.diff(then, 'minutes');
+    return timeDifferenceInMinutes;
+  }
+
 
   return (
     <Card
@@ -68,26 +41,26 @@ const LatestSearches = (props) => {
       {...rest}
     >
       <CardHeader
-        subheader={`${products.length} in total`}
+        subheader={`${data.length} in total`}
         title="Latest Searches"
       />
       <Divider />
       <List>
-        {products.map((product, i) => (
+        {data.map((game, i) => (
           <ListItem
-            divider={i < products.length - 1}
-            key={product.id}
+            divider={i < data.length - 1}
+            key={game.id}
           >
             <ListItemAvatar>
               <img
-                alt="Product"
+                alt="game"
                 className={classes.image}
-                src={product.imageUrl}
+                src={game.imageUrl}
               />
             </ListItemAvatar>
             <ListItemText
-              primary={product.name}
-              secondary={`Searched ${product.updatedAt.fromNow()}`}
+              primary={game.name}
+              secondary={getSearchedTime(game.updatedAt)<60?`Searched ${getSearchedTime(game.updatedAt)} minutes ago`:`Searched ${getSearchedTime(game.updatedAt)/60} hours ago`}
             />
           </ListItem>
         ))}

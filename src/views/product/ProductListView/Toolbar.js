@@ -14,7 +14,7 @@ import {
   Typography
 } from '@material-ui/core';
 import { Search as SearchIcon } from 'react-feather';
-import {getResults} from '../../../services/game';
+import {addGametoSearches, getResults} from '../../../services/game';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -86,9 +86,14 @@ const Toolbar = ({ className, ...rest }) => {
                 style={{backgroundColor:"#222"}}
               />
               {matchingGames.map((game,index)=>(
-                <ListItem onClick={()=>window.location.replace('/game/details/'+game['url_info']['id'])} key={`Game ${index+1}`}>
+                <ListItem onClick={
+                  async()=> {
+                    await addGametoSearches(game['url_info']['id']);
+                    window.location.replace('/game/details/'+game['url_info']['id'])
+                  }
+                } key={`Game ${index+1}`}>
                   <ListItemText style={{"cursor":"pointer"}}>{game['url_info']['url_name']}</ListItemText>
-                  <Typography variant="caption">{game['url_info']['type']}</Typography>
+                  <Typography variant="caption">{game['full_desc']['sort']}</Typography>
                 </ListItem>
               ))}
             </Box>
