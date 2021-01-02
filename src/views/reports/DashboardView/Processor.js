@@ -30,9 +30,9 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Processor = ({ className, ...rest }) => {
+const Processor = (props) => {
   const classes = useStyles();
-
+  const { value, className, ...rest } = props;
   return (
     <Card
       className={clsx(classes.root, className)}
@@ -56,7 +56,7 @@ const Processor = ({ className, ...rest }) => {
               color="textPrimary"
               variant="h3"
             >
-              intel i5 8th gen
+              {value}
             </Typography>
           </Grid>
           <Grid item>
@@ -71,7 +71,8 @@ const Processor = ({ className, ...rest }) => {
 };
 
 Processor.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
+  value: PropTypes.string
 };
 
 export default Processor;

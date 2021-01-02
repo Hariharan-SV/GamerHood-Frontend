@@ -1,15 +1,10 @@
 import React from 'react';
 import {
-  Container,
-  Grid,
   makeStyles
 } from '@material-ui/core';
 import Page from 'src/components/Page';
-import Graphics from './Graphics';
-//import LatestSearches from './LatestSearches';
-import Memory from './Memory';
-import Processor from './Processor';
-import OS from './OS';
+import { getUser } from 'src/services/user';
+import MainCard from './MainCard';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,64 +17,23 @@ const useStyles = makeStyles((theme) => ({
 
 const Dashboard = (props) => {
   const classes = useStyles();
+  const [userData, setUserData] = React.useState({});
+  React.useEffect(()=>{
+    async function onLoad() {
+      let values = await getUser();
+      if( values['status'] === 1 ) {
+        setUserData(values['userDetails'])
+      }
+    }
+    onLoad();
+  },[]);
   
   return (
     <Page
       className={classes.root}
       title="Dashboard"
     >
-      <Container maxWidth={false}>
-        <Grid
-          container
-          spacing={3}
-        >
-          <Grid
-            item
-            lg={3}
-            sm={6}
-            xl={3}
-            xs={12}
-          >
-            <Graphics />
-          </Grid>
-          <Grid
-            item
-            lg={3}
-            sm={6}
-            xl={3}
-            xs={12}
-          >
-            <Processor />
-          </Grid>
-          <Grid
-            item
-            lg={3}
-            sm={6}
-            xl={3}
-            xs={12}
-          >
-            <Memory />
-          </Grid>
-          <Grid
-            item
-            lg={3}
-            sm={6}
-            xl={3}
-            xs={12}
-          >
-            <OS />
-          </Grid>
-          <Grid
-            item
-            lg={4}
-            md={6}
-            xl={3}
-            xs={12}
-          >
-            {/*<LatestSearches />*/}
-          </Grid>
-        </Grid>
-      </Container>
+      {Object.keys(userData).length === 0 ? <div />:<MainCard userData={userData}/>}
     </Page>
   );
 };

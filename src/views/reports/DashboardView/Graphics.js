@@ -30,9 +30,9 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Graphics = ({ className, ...rest }) => {
+const Graphics = (props) => {
   const classes = useStyles();
-
+  const { value, className, ...rest } = props;
   return (
     <Card
       className={clsx(classes.root, className)}
@@ -56,7 +56,7 @@ const Graphics = ({ className, ...rest }) => {
               color="textPrimary"
               variant="h3"
             >
-              1 GB VRAM
+              {value}
             </Typography>
           </Grid>
           <Grid item>
@@ -71,7 +71,8 @@ const Graphics = ({ className, ...rest }) => {
 };
 
 Graphics.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
+  value: PropTypes.string
 };
 
 export default Graphics;

@@ -23,9 +23,9 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const Memory = ({ className, ...rest }) => {
+const Memory = (props) => {
   const classes = useStyles();
-
+  const { value, className, ...rest } = props;
   return (
     <Card
       className={clsx(classes.root, className)}
@@ -49,7 +49,7 @@ const Memory = ({ className, ...rest }) => {
               color="textPrimary"
               variant="h3"
             >
-              4 GB RAM
+              {value}
             </Typography>
           </Grid>
           <Grid item>
@@ -64,7 +64,8 @@ const Memory = ({ className, ...rest }) => {
 };
 
 Memory.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
+  value: PropTypes.string
 };
 
 export default Memory;

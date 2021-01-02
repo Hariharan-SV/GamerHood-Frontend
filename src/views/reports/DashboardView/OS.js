@@ -23,9 +23,9 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const OS = ({ className, ...rest }) => {
+const OS = (props) => {
   const classes = useStyles();
-
+  const { value, className, ...rest } = props;
   return (
     <Card
       className={clsx(classes.root, className)}
@@ -49,7 +49,7 @@ const OS = ({ className, ...rest }) => {
               color="textPrimary"
               variant="h3"
             >
-              Windows 10
+              {value}
             </Typography>
           </Grid>
           <Grid item>
@@ -64,7 +64,8 @@ const OS = ({ className, ...rest }) => {
 };
 
 OS.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
+  value: PropTypes.string
 };
 
 export default OS;
