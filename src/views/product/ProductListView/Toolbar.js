@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import {
   Box,
-  Button,
   Card,
   CardContent,
   TextField,
@@ -39,13 +38,18 @@ const Toolbar = ({ className, ...rest }) => {
   
     React.useEffect(() => {
       async function fetchUrl() {
-          let values =  await getResults(name);
-          if(values['status'] === 1){
-            values = values['data'];
-            setData(values);
-          }
+        if(name === ""){
+          setData([]);
+          return;
         }
+        let values =  await getResults(name);
+        if(values['status'] === 1){
+          values = values['data'];
+          setData(values);
+        }
+      }
       fetchUrl();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [name]);
     return data;
   }
@@ -82,7 +86,7 @@ const Toolbar = ({ className, ...rest }) => {
                 style={{backgroundColor:"#222"}}
               />
               {matchingGames.map((game,index)=>(
-                <ListItem key={`Game ${index+1}`}>
+                <ListItem onClick={()=>window.location.replace('/game/details/'+game['url_info']['id'])} key={`Game ${index+1}`}>
                   <ListItemText>{game['url_info']['url_name']}</ListItemText>
                   <Typography variant="caption">{game['url_info']['type']}</Typography>
                 </ListItem>

@@ -6,14 +6,11 @@ import {
   Box,
   Button,
   Container,
-  Grid,
   Link,
   TextField,
   Typography,
   makeStyles
 } from '@material-ui/core';
-import FacebookIcon from 'src/icons/Facebook';
-import GoogleIcon from 'src/icons/Google';
 import Page from 'src/components/Page';
 import {handleLogin} from 'src/services/auth';
 import Cookie from 'js-cookie';
@@ -140,7 +137,7 @@ const LoginView = (props) => {
                   {' '}
                   <Link
                     component={RouterLink}
-                    to="/auth/register"
+                    to="/register"
                     variant="h6"
                   >
                     Sign up

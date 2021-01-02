@@ -6,13 +6,10 @@ import {
 } from '@material-ui/core';
 import Page from 'src/components/Page';
 import Graphics from './Graphics';
-import LatestOrders from './LatestOrders';
-import LatestSearches from './LatestSearches';
-import Sales from './Sales';
+//import LatestSearches from './LatestSearches';
 import Memory from './Memory';
 import Processor from './Processor';
 import OS from './OS';
-import TrafficByDevice from './TrafficByDevice';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -72,15 +69,6 @@ const Dashboard = (props) => {
           >
             <OS />
           </Grid>
-          {/*<Grid
-            item
-            lg={8}
-            md={12}
-            xl={9}
-            xs={12}
-          >
-            <Sales />
-          </Grid>
           <Grid
             item
             lg={4}
@@ -88,25 +76,7 @@ const Dashboard = (props) => {
             xl={3}
             xs={12}
           >
-            <TrafficByDevice />
-          </Grid>*/}
-          <Grid
-            item
-            lg={8}
-            md={12}
-            xl={9}
-            xs={12}
-          >
-            {/*<LatestOrders />*/}
-          </Grid>
-          <Grid
-            item
-            lg={4}
-            md={6}
-            xl={3}
-            xs={12}
-          >
-            <LatestSearches />
+            {/*<LatestSearches />*/}
           </Grid>
         </Grid>
       </Container>

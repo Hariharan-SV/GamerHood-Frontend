@@ -13,20 +13,6 @@ import {
   makeStyles
 } from '@material-ui/core';
 
-const states = [
-  {
-    value: 'alabama',
-    label: 'Alabama'
-  },
-  {
-    value: 'new-york',
-    label: 'New York'
-  },
-  {
-    value: 'san-francisco',
-    label: 'San Francisco'
-  }
-];
 
 const useStyles = makeStyles(() => ({
   root: {}
@@ -112,24 +98,9 @@ const ProfileDetails = ({ className, ...rest }) => {
                 onChange={handleChange}
                 required
                 value={values.email}
-                variant="outlined"
+                variant="filled"
                 style={{backgroundColor:"#222"}}
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="Phone Number"
-                name="phone"
-                onChange={handleChange}
-                type="number"
-                value={values.phone}
-                variant="outlined"
-                style={{backgroundColor:"#222"}}
+                disabled
               />
             </Grid>
             <Grid
@@ -147,33 +118,6 @@ const ProfileDetails = ({ className, ...rest }) => {
                 variant="outlined"
                 style={{backgroundColor:"#222"}}
               />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="Select State"
-                name="state"
-                onChange={handleChange}
-                required
-                select
-                SelectProps={{ native: true }}
-                value={values.state}
-                variant="outlined"
-                style={{backgroundColor:"#222"}}
-              >
-                {states.map((option) => (
-                  <option
-                    key={option.value}
-                    value={option.value}
-                  >
-                    {option.label}
-                  </option>
-                ))}
-              </TextField>
             </Grid>
           </Grid>
         </CardContent>

@@ -1,35 +1,42 @@
 export default {
   h1: {
+    fontFamily: 'Maven Pro',
     fontWeight: 500,
     fontSize: 35,
     letterSpacing: '-0.24px'
   },
   h2: {
+    fontFamily: 'Maven Pro',
     fontWeight: 500,
     fontSize: 29,
     letterSpacing: '-0.24px'
   },
   h3: {
+    fontFamily: 'Maven Pro',
     fontWeight: 500,
     fontSize: 24,
     letterSpacing: '-0.06px'
   },
   h4: {
+    fontFamily: 'Maven Pro',
     fontWeight: 500,
     fontSize: 20,
     letterSpacing: '-0.06px'
   },
   h5: {
+    fontFamily: 'Maven Pro',
     fontWeight: 500,
     fontSize: 16,
     letterSpacing: '-0.05px'
   },
   h6: {
+    fontFamily: 'Maven Pro',
     fontWeight: 500,
     fontSize: 14,
     letterSpacing: '-0.05px'
   },
   overline: {
+    fontFamily: 'Maven Pro',
     fontWeight: 500
   }
 };

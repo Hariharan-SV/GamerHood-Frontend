@@ -16,7 +16,6 @@ import {
 import Page from 'src/components/Page';
 import {handleRegister} from 'src/services/auth';
 import Cookie from 'js-cookie';
-import {getUser} from 'src/services/user';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -208,7 +207,7 @@ const RegisterView = (props) => {
                   {' '}
                   <Link
                     component={RouterLink}
-                    to="/auth/login"
+                    to="/login"
                     variant="h6"
                   >
                     Sign in

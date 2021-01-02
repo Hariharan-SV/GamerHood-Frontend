@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "GamerHood",
+  "name": "Game analysis and recommendation system",
   "icons": [
     {
       "src": "favicon.ico",

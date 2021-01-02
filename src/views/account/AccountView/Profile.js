@@ -5,9 +5,7 @@ import moment from 'moment';
 import {
   Avatar,
   Box,
-  Button,
   Card,
-  CardActions,
   CardContent,
   Divider,
   Typography,
@@ -60,7 +58,7 @@ const Profile = ({ className, ...rest }) => {
             color="textSecondary"
             variant="body1"
           >
-            {`${user.city} ${user.country}`}
+            {`${user.country}`}
           </Typography>
           <Typography
             className={classes.dateText}

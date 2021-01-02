@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import {
   Avatar,
   Box,
-  Button,
   Divider,
   Drawer,
   Hidden,
@@ -13,15 +12,11 @@ import {
   makeStyles
 } from '@material-ui/core';
 import {
-  AlertCircle as AlertCircleIcon,
   BarChart as BarChartIcon,
-  Lock as LockIcon,
   Settings as SettingsIcon,
-  ShoppingBag as ShoppingBagIcon,
-  User as UserIcon,
-  UserPlus as UserPlusIcon,
-  Users as UsersIcon
-} from 'react-feather';
+  Person as UserIcon,
+  SportsEsports as GameIcon
+} from '@material-ui/icons';
 import NavItem from './NavItem';
 import {getUser} from '../../../services/user';
 
@@ -38,8 +33,8 @@ const items = [
   },
   {
     href: '/game',
-    icon: ShoppingBagIcon,
-    title: 'Products'
+    icon: GameIcon,
+    title: 'Explore'
   },
   {
     href: '/user/account',
