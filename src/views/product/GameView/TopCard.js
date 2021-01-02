@@ -6,8 +6,9 @@ const TopCard = (props) => {
   return(
     <Grid container direction="row" align="center" style={{"justifyContent":"center"}}>
       <Grid item container xs={11} spacing={2} style={{"backgroundColor":"#0f0f0f"}}>
-        <Card>
+        <Card style={{"width":"100%"}}>
           <CardContent align="left">
+            <img src={gameData["img_url"]} alt={`img - ${gameData["name"]}`} width="100%"/>
             <Typography variant="h2" className={classes.text}>{gameData["name"]}</Typography>
             <Typography variant="h5" className={classes.text}>{`Published by ${gameData["developer"]?gameData["developer"]:''}`}</Typography>
             <br />
