@@ -87,7 +87,7 @@ const Toolbar = ({ className, ...rest }) => {
               />
               {matchingGames.map((game,index)=>(
                 <ListItem onClick={()=>window.location.replace('/game/details/'+game['url_info']['id'])} key={`Game ${index+1}`}>
-                  <ListItemText>{game['url_info']['url_name']}</ListItemText>
+                  <ListItemText style={{"cursor":"pointer"}}>{game['url_info']['url_name']}</ListItemText>
                   <Typography variant="caption">{game['url_info']['type']}</Typography>
                 </ListItem>
               ))}

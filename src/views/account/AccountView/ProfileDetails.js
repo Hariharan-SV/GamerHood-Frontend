@@ -18,16 +18,10 @@ const useStyles = makeStyles(() => ({
   root: {}
 }));
 
-const ProfileDetails = ({ className, ...rest }) => {
+const ProfileDetails = (props) => {
+  const { userData, className, ...rest } = props;
   const classes = useStyles();
-  const [values, setValues] = useState({
-    firstName: 'Katarina',
-    lastName: 'Smith',
-    email: 'demo@devias.io',
-    phone: '',
-    state: 'Alabama',
-    country: 'USA'
-  });
+  const [values, setValues] = useState(userData);
 
   const handleChange = (event) => {
     setValues({
@@ -86,7 +80,7 @@ const ProfileDetails = ({ className, ...rest }) => {
                 style={{backgroundColor:"#222"}}
               />
             </Grid>
-            <Grid
+            {/*<Grid
               item
               md={6}
               xs={12}
@@ -118,7 +112,7 @@ const ProfileDetails = ({ className, ...rest }) => {
                 variant="outlined"
                 style={{backgroundColor:"#222"}}
               />
-            </Grid>
+            </Grid>*/}
           </Grid>
         </CardContent>
         <Divider />

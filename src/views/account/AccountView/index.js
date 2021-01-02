@@ -7,6 +7,7 @@ import {
 import Page from 'src/components/Page';
 import Profile from './Profile';
 import ProfileDetails from './ProfileDetails';
+import { getUser } from 'src/services/user';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,6 +20,16 @@ const useStyles = makeStyles((theme) => ({
 
 const Account = () => {
   const classes = useStyles();
+  const [userData,setUserData] = React.useState({});
+  React.useEffect(()=>{
+    async function onLoad() {
+      let values = await getUser();
+      if( values['status'] === 1 ) {
+        setUserData(values['userDetails'])
+      }
+    }
+    onLoad();
+  },[]);
 
   return (
     <Page
@@ -36,7 +47,7 @@ const Account = () => {
             md={6}
             xs={12}
           >
-            <Profile />
+            {Object.keys(userData).length?<Profile userData={userData}/>:<div/>}
           </Grid>
           <Grid
             item
@@ -44,7 +55,7 @@ const Account = () => {
             md={6}
             xs={12}
           >
-            <ProfileDetails />
+            {Object.keys(userData).length?<ProfileDetails userData={userData} />:<div/>}
           </Grid>
         </Grid>
       </Container>

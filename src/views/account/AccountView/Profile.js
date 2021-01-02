@@ -14,11 +14,8 @@ import {
 
 const user = {
   avatar: '/static/images/avatars/avatar_12.png',
-  city: 'Los Angeles',
-  country: 'USA',
-  jobTitle: 'Senior Developer',
-  name: 'Katarina Smith',
-  timezone: 'GTM-7'
+  country: 'India',
+  timezone: 'GMT+5.30'
 };
 
 const useStyles = makeStyles(() => ({
@@ -29,7 +26,8 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const Profile = ({ className, ...rest }) => {
+const Profile = (props) => {
+  const {userData, className, ...rest } = props;
   const classes = useStyles();
 
   return (
@@ -52,7 +50,7 @@ const Profile = ({ className, ...rest }) => {
             gutterBottom
             variant="h3"
           >
-            {user.name}
+            {`${userData.firstName} ${userData.lastName}`}
           </Typography>
           <Typography
             color="textSecondary"
@@ -70,23 +68,13 @@ const Profile = ({ className, ...rest }) => {
         </Box>
       </CardContent>
       <Divider />
-      {/*
-      <CardActions>
-        <Button
-          color="primary"
-          fullWidth
-          variant="text"
-        >
-          Upload picture
-        </Button>
-      </CardActions>
-      */}
     </Card>
   );
 };
 
 Profile.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
+  userData: PropTypes.object
 };
 
 export default Profile;
