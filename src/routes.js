@@ -8,6 +8,7 @@ import DashboardView from 'src/views/reports/DashboardView';
 import LoginView from 'src/views/auth/LoginView';
 import NotFoundView from 'src/views/errors/NotFoundView';
 import ProductListView from 'src/views/product/ProductListView';
+import ProductView from 'src/views/product/GameView';
 import RegisterView from 'src/views/auth/RegisterView';
 import SettingsView from 'src/views/settings/SettingsView';
 
@@ -27,17 +28,18 @@ const routes = (isLoggedIn, isAuthenticated) => [
     path: '/game',
     element: isLoggedIn ?<DashboardLayout /> : <Navigate to="/login" />,
     children: [
+      { path: 'details/:id', element: <ProductView /> },
       { path: '/', element: <ProductListView /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]
   },
   {
     path: '/',
-    element: isLoggedIn? <Navigate to="user/dashboard" /> : <MainLayout />,
+    element: <MainLayout />,
     children: [
       { path: 'login', element: <LoginView isAuthenticated={isAuthenticated}/> },
       { path: 'register', element: <RegisterView isAuthenticated={isAuthenticated}/> },
-      { path: '/', element: <Navigate to="login" /> },
+      { path: '/', element: isLoggedIn? <Navigate to="user/dashboard" /> : <Navigate to="login" /> },
       { path: '404', element: <NotFoundView /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]
