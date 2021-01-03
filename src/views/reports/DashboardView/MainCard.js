@@ -24,7 +24,7 @@ const MainCard = (props) => {
             xl={3}
             xs={12}
           >
-            <Graphics value={userData["system"]?userData["system"]["graphics"]:"unknown"}/>
+            <Graphics value={userData["system"]?userData["system"]["graphics"]:"N/A"}/>
           </Grid>
           <Grid
             item
@@ -33,7 +33,7 @@ const MainCard = (props) => {
             xl={3}
             xs={12}
           >
-            <Processor value={userData["system"]?userData["system"]["processor"]:"unknown"}/>
+            <Processor value={userData["system"]?userData["system"]["processor"]:"N/A"}/>
           </Grid>
           <Grid
             item
@@ -42,7 +42,7 @@ const MainCard = (props) => {
             xl={3}
             xs={12}
           >
-            <Memory value={userData["system"]?userData["system"]["memory"]:"unknown"}/>
+            <Memory value={userData["system"]?userData["system"]["memory"]:"N/A"}/>
           </Grid>
           <Grid
             item
@@ -51,7 +51,7 @@ const MainCard = (props) => {
             xl={3}
             xs={12}
           >
-            <OS value={userData["system"]?userData["system"]["os"]:"unknown"}/>
+            <OS value={userData["system"]?userData["system"]["os"]:"N/A"}/>
           </Grid>
           <Grid
             item
