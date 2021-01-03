@@ -50,6 +50,7 @@ const LatestSearches = (props) => {
           <ListItem
             divider={i < data.length - 1}
             key={game.id}
+            style={{"cursor":"pointer"}}
           >
             <ListItemAvatar>
               <img
@@ -59,6 +60,7 @@ const LatestSearches = (props) => {
               />
             </ListItemAvatar>
             <ListItemText
+              onClick = {()=>{window.location.replace("/game/details/"+game.id)}}
               primary={game.name}
               secondary={getSearchedTime(game.updatedAt)<60?`Searched ${Math.round(getSearchedTime(game.updatedAt))} minutes ago`:`Searched ${Math.round(getSearchedTime(game.updatedAt)/60,1)} hours ago`}
             />
