@@ -22,7 +22,6 @@ const App = () => {
   const [authenticated,isAuthenticated] = React.useState(onLoad);
   React.useEffect(() => {
     const onLoad = async() => {
-      console.log(process.env.REACT_APP_BACKEND_URL)
       try {
         const value = await isLoggedIn();
         isAuthenticated(value);

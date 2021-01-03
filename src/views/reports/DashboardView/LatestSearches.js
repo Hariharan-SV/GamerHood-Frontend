@@ -60,7 +60,7 @@ const LatestSearches = (props) => {
             </ListItemAvatar>
             <ListItemText
               primary={game.name}
-              secondary={getSearchedTime(game.updatedAt)<60?`Searched ${getSearchedTime(game.updatedAt)} minutes ago`:`Searched ${getSearchedTime(game.updatedAt)/60} hours ago`}
+              secondary={getSearchedTime(game.updatedAt)<60?`Searched ${Math.round(getSearchedTime(game.updatedAt))} minutes ago`:`Searched ${Math.round(getSearchedTime(game.updatedAt)/60,1)} hours ago`}
             />
           </ListItem>
         ))}
